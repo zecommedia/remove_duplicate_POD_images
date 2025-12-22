@@ -1,0 +1,19 @@
+# POD Mockup Duplicate Detector - Requirements
+# =============================================
+# Cài đặt: pip install -r requirements.txt
+
+# Core image processing
+Pillow>=9.0.0
+imagehash>=4.3.0
+opencv-python>=4.5.0
+numpy>=1.21.0
+
+# CLIP for semantic similarity (QUAN TRỌNG NHẤT)
+torch>=1.10.0
+open-clip-torch>=2.20.0
+
+# Similarity calculation
+scikit-learn>=1.0.0
+
+# HTTP requests
+requests>=2.28.0
