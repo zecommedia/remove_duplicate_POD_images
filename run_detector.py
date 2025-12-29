@@ -11,21 +11,24 @@ Sử dụng:
 from pod_duplicate_detector import PODDuplicateDetector, DuplicateConfig, process_json_file
 import os
 
+# Lấy thư mục hiện tại
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+
 # =============================================================================
 # CẤU HÌNH - CHỈNH SỬA TẠI ĐÂY
 # =============================================================================
 
-# Đường dẫn file đầu vào
-INPUT_FILE = r"D:\Zecom AutoAgents\VPTEEK Project\match_case\output(1).json"
+# Đường dẫn file đầu vào (có thể dùng đường dẫn tương đối hoặc tuyệt đối)
+INPUT_FILE = os.path.join(CURRENT_DIR, "sample_input.json")
 
 # Đường dẫn file đầu ra (đã lọc trùng)
-OUTPUT_FILE = r"D:\Zecom AutoAgents\VPTEEK Project\match_case\output_deduplicated(1).json"
+OUTPUT_FILE = os.path.join(CURRENT_DIR, "output_deduplicated.json")
 
 # Đường dẫn file chứa các item bị loại bỏ (optional, set None nếu không cần)
-REMOVED_FILE = r"D:\Zecom AutoAgents\VPTEEK Project\match_case\output_removed(1).json"
+REMOVED_FILE = os.path.join(CURRENT_DIR, "output_removed.json")
 
 # Đường dẫn file chứa chi tiết các cặp trùng (optional, set None nếu không cần)
-PAIRS_FILE = r"D:\Zecom AutoAgents\VPTEEK Project\match_case\output_duplicate_pairs(1).json"
+PAIRS_FILE = os.path.join(CURRENT_DIR, "output_duplicate_pairs.json")
 
 # Cấu hình ngưỡng detect (có thể điều chỉnh)
 CONFIG = DuplicateConfig(

@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Sample Product 1",
+    "image": "https://via.placeholder.com/512x512.png?text=Sample+1",
+    "link": "https://example.com/product-1",
+    "seller": "Sample Seller"
+  },
+  {
+    "title": "Sample Product 2", 
+    "image": "https://via.placeholder.com/512x512.png?text=Sample+2",
+    "link": "https://example.com/product-2",
+    "seller": "Sample Seller"
+  },
+  {
+    "title": "Sample Product 3",
+    "image": "https://via.placeholder.com/512x512.png?text=Sample+3",
+    "link": "https://example.com/product-3",
+    "seller": "Another Seller"
+  }
+]

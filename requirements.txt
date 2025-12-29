@@ -1,6 +1,9 @@
 # POD Mockup Duplicate Detector - Requirements
 # =============================================
 # Cài đặt: pip install -r requirements.txt
+#
+# LƯU Ý: File này cài đặt PyTorch CPU version mặc định (hoạt động trên mọi máy)
+# Nếu bạn có GPU NVIDIA, dùng: pip install -r requirements-cuda.txt
 
 # Core image processing
 Pillow>=9.0.0
@@ -9,7 +12,12 @@ opencv-python>=4.5.0
 numpy>=1.21.0
 
 # CLIP for semantic similarity (QUAN TRỌNG NHẤT)
-torch>=1.10.0
+# PyTorch CPU version - hoạt động trên mọi máy
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch>=2.0.0
+torchvision>=0.15.0
+
+# OpenCLIP
 open-clip-torch>=2.20.0
 
 # Similarity calculation
@@ -17,3 +25,6 @@ scikit-learn>=1.0.0
 
 # HTTP requests
 requests>=2.28.0
+
+# Progress bar (optional but recommended)
+tqdm>=4.64.0
