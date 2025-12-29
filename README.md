@@ -4,19 +4,38 @@ Phát hiện ảnh mockup POD (Print on Demand) dùng chung design, hỗ trợ G
 
 ## 🚀 Quick Start (3 bước)
 
+### Windows (Recommended)
+
+```batch
+# 1. Clone repo
+git clone https://github.com/zecommedia/remove_duplicate_POD_images.git
+cd remove_duplicate_POD_images
+
+# 2. Chạy script setup tự động (tạo venv + cài đặt)
+setup_windows.bat
+
+# 3. Kích hoạt venv và chạy
+venv\Scripts\activate
+python run_detector.py
+```
+
+### Linux/Mac
+
 ```bash
 # 1. Clone repo
-git clone <repo-url>
-cd match_case
+git clone https://github.com/zecommedia/remove_duplicate_POD_images.git
+cd remove_duplicate_POD_images
 
-# 2. Tạo virtual environment (khuyến khích)
+# 2. Tạo virtual environment
 python -m venv venv
-venv\Scripts\activate     # Windows
-# source venv/bin/activate  # Linux/Mac
+source venv/bin/activate
 
 # 3. Cài đặt dependencies
 pip install -r requirements.txt          # CPU (mọi máy)
-# pip install -r requirements-cuda.txt   # GPU NVIDIA (nhanh hơn 5-10x)
+# pip install -r requirements-cuda.txt   # GPU NVIDIA
+
+# 4. Chạy
+python run_detector.py
 ```
 
 **Kiểm tra cài đặt:**
@@ -198,6 +217,40 @@ CONFIG = DuplicateConfig(
 
 ## 🛠️ Troubleshooting
 
+### ⚠️ Lỗi DLL trên Windows (QUAN TRỌNG)
+
+```
+OSError: [WinError 1114] A dynamic link library (DLL) initialization routine failed.
+```
+
+**Nguyên nhân:** Thiếu Visual C++ Redistributable hoặc PyTorch cài không đúng.
+
+**Cách fix:**
+
+1. **Cài Visual C++ Redistributable** (bắt buộc):
+   - Tải từ: https://aka.ms/vs/17/release/vc_redist.x64.exe
+   - Cài đặt và restart máy
+
+2. **Cài lại PyTorch đúng cách** (trong venv):
+```batch
+# Kích hoạt venv
+venv\Scripts\activate
+
+# Gỡ PyTorch cũ
+pip uninstall torch torchvision torchaudio -y
+
+# Cài lại PyTorch CUDA (cho GPU NVIDIA)
+pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
+
+# Hoặc PyTorch CPU
+pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+```
+
+3. **Hoặc chạy script tự động:**
+```batch
+setup_windows.bat
+```
+
 ### CLIP không load được
 
 ```bash
@@ -235,11 +288,12 @@ config = DuplicateConfig(
 ## 📁 Cấu trúc Project
 
 ```
-match_case/
+remove_duplicate_POD_images/
 ├── pod_duplicate_detector.py    # Main detector (CLIP + ORB)
 ├── pod_duplicate_lightweight.py # Lightweight version (pHash + ORB only)
 ├── run_detector.py              # Quick run script
 ├── setup_check.py               # Kiểm tra môi trường
+├── setup_windows.bat            # Script cài đặt tự động Windows
 ├── sample_input.json            # File mẫu để test
 ├── requirements.txt             # Dependencies (CPU)
 ├── requirements-cuda.txt        # Dependencies (GPU CUDA)
